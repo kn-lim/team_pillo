@@ -182,7 +182,7 @@ class StuHomePage extends React.Component {
                   <p color="muted">Checklist:</p>
                   <form>
                     <CheckboxList
-                      list={this.state.checkboxitems1}
+                      list={this.state.checkboxitems2}
                       delete={this.deleteItem1}
                     />
                     <input
