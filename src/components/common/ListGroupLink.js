@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ListGroupItem } from 'reactstrap';
 
@@ -12,7 +12,6 @@ class ListGroupLink extends React.Component {
   }
 
   handleClick = evt => {
-    const { linkTo } = this.state;
     window.location = this.state.linkTo;
   };
 

@@ -10,14 +10,11 @@ import {
   Button,
   Form,
   FormGroup,
-  Label,
   Input,
   Card,
   CardBody,
   ListGroup,
   ListGroupItem,
-  CardTitle,
-  CardSubtitle,
   Row,
   Col,
   Container,
@@ -27,8 +24,6 @@ import {
   ModalFooter
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-import ListGroupLink from '../common/ListGroupLink';
-import Announcement from '../common/Announcement';
 
 class ForumPage extends React.Component {
   constructor(props) {
@@ -111,11 +106,9 @@ class ForumPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: '#34374C' }}>
-          <NavbarBrand>
-            <a href="/">
-              <img src={logo} width="131" alt="Pillo" />
-            </a>
+        <Navbar dark style={{ background: '#34374C' }}>
+          <NavbarBrand href="/">
+            <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
