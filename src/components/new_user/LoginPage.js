@@ -44,7 +44,6 @@ class LoginPage extends React.Component {
   };
 
   handleStudentSubmit = evt => {
-    const { email, password } = this.state;
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
@@ -54,7 +53,6 @@ class LoginPage extends React.Component {
     }
   };
   handleInstructorSubmit = evt => {
-    const { email, password } = this.state;
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;

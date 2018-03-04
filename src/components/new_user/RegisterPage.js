@@ -16,7 +16,6 @@ import {
   NavLink
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-import { Link } from 'react-router-dom';
 
 class RegisterPage extends React.Component {
   // constructor(props) {
@@ -84,14 +83,7 @@ class RegisterPage extends React.Component {
   };
 
   handleSubmit = evt => {
-    const {
-      first_name,
-      last_name,
-      email,
-      password,
-      confirm_password,
-      register
-    } = this.state;
+    const { register } = this.state;
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
@@ -275,7 +267,7 @@ function validate(first_name, last_name, email, password, confirm_password) {
     email: email.length === 0 || !validateEmail(email),
     password: password.length === 0,
     confirm_password:
-      confirm_password != password || confirm_password.length === 0
+      confirm_password !== password || confirm_password.length === 0
   };
 }
 
