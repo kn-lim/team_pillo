@@ -23,6 +23,7 @@ import {
   Container
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import ListGroupLink from '../common/ListGroupLink';
 
 class InstrHomePage extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class InstrHomePage extends React.Component {
       isOpen: false
     };
   }
-  
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -43,18 +44,18 @@ class InstrHomePage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: "#34374C" }}>
+        <Navbar fixedTop dark style={{ background: '#34374C' }}>
           <NavbarBrand>
-            <a href="/">
-              <img src={ logo } width="131" alt="Pillo"/>
+            <a href="/instructor">
+              <img src={logo} width="131" alt="Pillo" />
             </a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={ this.state.isOpen } navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink href="/create_class">Create Class</NavLink>
+                <NavLink href="/">Log Out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -69,42 +70,22 @@ class InstrHomePage extends React.Component {
             <Col>
               <Card body>
                 <CardTitle>
-                  <a href="#">CSE 134B</a>
+                  <a href="/instr_class">CSE 134B</a>
                 </CardTitle>
                 <CardSubtitle>Winter 2018</CardSubtitle>
                 <hr />
-                <div className="text-left">
+                <div style={{ textAlign: 'center' }}>
                   <ListGroup>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 1
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 2
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 3
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 4
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 5
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 6
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 7
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 8
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 9
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 10
-                    </ListGroupItem>
+                    <ListGroupLink text="Group 1" linkTo="/group" />
+                    <ListGroupLink text="Group 2" linkTo="/group" />
+                    <ListGroupLink text="Group 3" linkTo="/group" />
+                    <ListGroupLink text="Group 4" linkTo="/group" />
+                    <ListGroupLink text="Group 5" linkTo="/group" />
+                    <ListGroupLink text="Group 6" linkTo="/group" />
+                    <ListGroupLink text="Group 7" linkTo="/group" />
+                    <ListGroupLink text="Group 8" linkTo="/group" />
+                    <ListGroupLink text="Group 9" linkTo="/group" />
+                    <ListGroupLink text="Group 10" linkTo="/group" />
                   </ListGroup>
                 </div>
               </Card>
@@ -112,27 +93,17 @@ class InstrHomePage extends React.Component {
             <Col>
               <Card body>
                 <CardTitle>
-                  <a href="#">COGS 108</a>
+                  <a href="/instr_class">COGS 108</a>
                 </CardTitle>
                 <CardSubtitle>Winter 2018</CardSubtitle>
                 <hr />
-                <div className="text-left">
+                <div style={{ textAlign: 'center' }}>
                   <ListGroup>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 1
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 2
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 3
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 4
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="#">
-                      Group 5
-                    </ListGroupItem>
+                    <ListGroupLink text="Group 1" linkTo="/group" />
+                    <ListGroupLink text="Group 2" linkTo="/group" />
+                    <ListGroupLink text="Group 3" linkTo="/group" />
+                    <ListGroupLink text="Group 4" linkTo="/group" />
+                    <ListGroupLink text="Group 5" linkTo="/group" />
                   </ListGroup>
                 </div>
               </Card>
@@ -140,7 +111,7 @@ class InstrHomePage extends React.Component {
           </Row>
         </Container>
       </div>
-    )
+    );
   }
 }
 

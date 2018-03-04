@@ -7,7 +7,17 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Card,
+  CardBody,
+  Table,
+  Row,
+  Col,
+  Container
 } from 'reactstrap';
 import logo from '../../images/logo.png';
 
@@ -20,7 +30,7 @@ class InstrClassListPage extends React.Component {
       isOpen: false
     };
   }
-  
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -30,28 +40,68 @@ class InstrClassListPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: "#34374C" }}>
+        <Navbar fixedTop dark style={{ background: '#34374C' }}>
           <NavbarBrand>
-            <a href="/">
-              <img src={ logo } width="131" alt="Pillo"/>
+            <a href="/instructor">
+              <img src={logo} width="131" alt="Pillo" />
             </a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={ this.state.isOpen } navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink href="/create_class">Class List</NavLink>
+                <NavLink href="/create_assignment">Create Assignment</NavLink>
+                <NavLink href="/grades">Grades</NavLink>
+                <NavLink href="/">Log Out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
 
-        <div>
-          <h1>Class List</h1>
-        </div>
+        <Container>
+          <Card>
+            <CardBody>
+              <h1>CSE 134B</h1>
+              <p color="muted">Winter 2018</p>
+              <hr />
+              <Row>
+                <Col>
+                  <Table hover>
+                    <thead>
+                      <tr>
+                        <th>Student List</th>
+                        <th>Is TA?</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Ken Truong</td>
+                        <td>
+                          <Input type="checkbox" checked />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Kevin Lim</td>
+                        <td>
+                          <Input type="checkbox" checked />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Perry Liu</td>
+                        <td>
+                          <Input type="checkbox" checked />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </Table>
+                </Col>
+              </Row>
+            </CardBody>
+          </Card>
+        </Container>
       </div>
-    )
+    );
   }
 }
 
