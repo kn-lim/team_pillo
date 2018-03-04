@@ -44,6 +44,7 @@ class StuClassPage extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavLink href="/stu_class">Class</NavLink>
                 <NavLink href="/forum">Forum</NavLink>
                 <NavLink href="/group">My Group</NavLink>
                 <NavLink href="/grades">Class Grades</NavLink>
