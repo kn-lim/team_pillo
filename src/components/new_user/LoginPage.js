@@ -28,6 +28,11 @@ class LoginPage extends React.Component {
       email: '',
       password: ''
     };
+
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleStudentSubmit = this.handleStudentSubmit.bind(this);
+    this.handleInstructorSubmit = this.handleInstructorSubmit.bind(this);
   }
 
   toggle() {
@@ -36,14 +41,14 @@ class LoginPage extends React.Component {
     });
   }
 
-  handleEmailChange = evt => {
+  handleEmailChange(evt) {
     this.setState({ email: evt.target.value });
-  };
-  handlePasswordChange = evt => {
+  }
+  handlePasswordChange(evt) {
     this.setState({ password: evt.target.value });
-  };
+  }
 
-  handleStudentSubmit = evt => {
+  handleStudentSubmit(evt) {
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
@@ -51,8 +56,8 @@ class LoginPage extends React.Component {
       evt.preventDefault();
       window.location = '/student';
     }
-  };
-  handleInstructorSubmit = evt => {
+  }
+  handleInstructorSubmit(evt) {
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
@@ -60,7 +65,7 @@ class LoginPage extends React.Component {
       evt.preventDefault();
       window.location = '/instructor';
     }
-  };
+  }
 
   canbeSubmitted() {
     const errors = validate(this.state.email, this.state.password);
