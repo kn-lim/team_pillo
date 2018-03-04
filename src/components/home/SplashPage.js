@@ -10,7 +10,6 @@ import {
   Button
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-import { Link } from 'react-router-dom';
 import ListGroupLink from '../common/ListGroupLink';
 
 class SplashPage extends React.Component {

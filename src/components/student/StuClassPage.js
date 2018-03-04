@@ -7,20 +7,12 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button,
   Card,
   CardBody,
   Row,
   Col,
   Container,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  ListGroup,
-  ListGroupItem,
-  CardTitle,
-  CardSubtitle
+  ListGroup
 } from 'reactstrap';
 import logo from '../../images/logo.png';
 import ListGroupLink from '../common/ListGroupLink';

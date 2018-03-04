@@ -37,7 +37,6 @@ class AddClassPage extends React.Component {
   };
 
   handleSubmit = evt => {
-    const { code } = this.state;
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;

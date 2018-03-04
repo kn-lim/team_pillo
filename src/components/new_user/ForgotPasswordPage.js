@@ -43,7 +43,6 @@ class ForgotPasswordPage extends React.Component {
   };
 
   handleSubmit = evt => {
-    const { email } = this.state;
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
