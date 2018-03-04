@@ -33,17 +33,19 @@ class ForgotPasswordPage extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggle = this.toggle.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
   }
 
-  handleChange = evt => {
+  handleChange(evt) {
     this.setState({ value: evt.target.value });
-  };
+  }
 
-  handleEmailChange = evt => {
+  handleEmailChange(evt) {
     this.setState({ email: evt.target.value });
-  };
+  }
 
-  handleSubmit = evt => {
+  handleSubmit(evt) {
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
@@ -51,7 +53,7 @@ class ForgotPasswordPage extends React.Component {
       evt.preventDefault();
       this.setState({ visible: true });
     }
-  };
+  }
 
   onDismiss() {
     this.setState({ visible: false });

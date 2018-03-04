@@ -55,6 +55,16 @@ class RegisterPage extends React.Component {
         confirm_password: false
       }
     };
+
+    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+    this.handleLastNameChange = this.handleLastNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(
+      this
+    );
+    this.handleRegisterChange = this.handleRegisterChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggle() {
@@ -63,26 +73,26 @@ class RegisterPage extends React.Component {
     });
   }
 
-  handleFirstNameChange = evt => {
+  handleFirstNameChange(evt) {
     this.setState({ first_name: evt.target.value });
-  };
-  handleLastNameChange = evt => {
+  }
+  handleLastNameChange(evt) {
     this.setState({ last_name: evt.target.value });
-  };
-  handleEmailChange = evt => {
+  }
+  handleEmailChange(evt) {
     this.setState({ email: evt.target.value });
-  };
-  handlePasswordChange = evt => {
+  }
+  handlePasswordChange(evt) {
     this.setState({ password: evt.target.value });
-  };
-  handleConfirmPasswordChange = evt => {
+  }
+  handleConfirmPasswordChange(evt) {
     this.setState({ confirm_password: evt.target.value });
-  };
-  handleRegisterChange = evt => {
+  }
+  handleRegisterChange(evt) {
     this.setState({ register: evt.target.value });
-  };
+  }
 
-  handleSubmit = evt => {
+  handleSubmit(evt) {
     const { register } = this.state;
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
@@ -96,7 +106,7 @@ class RegisterPage extends React.Component {
         window.location = '/instructor';
       }
     }
-  };
+  }
 
   handleBlur = field => evt => {
     this.setState({
