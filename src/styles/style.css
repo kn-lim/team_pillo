@@ -1,24 +1,27 @@
 .container {
-    padding-top: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .container-fluid {
-    padding-top: 3rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 /* SplashPage */
 .splash-text {
-    position: absolute;
-    text-align: center;
-	top: 30%;
-	width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  width: 100%;
 }
 
 .splash-bg {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/teamwork.png");
-    height: 100%;
-    background-attachment: fixed;
-    background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../images/teamwork.png');
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

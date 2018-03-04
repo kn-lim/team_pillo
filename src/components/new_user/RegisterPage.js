@@ -16,6 +16,7 @@ import {
   NavLink
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import { Link } from 'react-router-dom';
 
 class RegisterPage extends React.Component {
   // constructor(props) {
@@ -40,37 +41,115 @@ class RegisterPage extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+      confirm_password: '',
+      register: false,
+      touched: {
+        first_name: false,
+        last_name: false,
+        email: false,
+        password: false,
+        confirm_password: false
+      }
     };
   }
-  
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
+  handleFirstNameChange = evt => {
+    this.setState({ first_name: evt.target.value });
+  };
+  handleLastNameChange = evt => {
+    this.setState({ last_name: evt.target.value });
+  };
+  handleEmailChange = evt => {
+    this.setState({ email: evt.target.value });
+  };
+  handlePasswordChange = evt => {
+    this.setState({ password: evt.target.value });
+  };
+  handleConfirmPasswordChange = evt => {
+    this.setState({ confirm_password: evt.target.value });
+  };
+  handleRegisterChange = evt => {
+    this.setState({ register: evt.target.value });
+  };
+
+  handleSubmit = evt => {
+    const {
+      first_name,
+      last_name,
+      email,
+      password,
+      confirm_password,
+      register
+    } = this.state;
+    if (!this.canbeSubmitted()) {
+      evt.preventDefault();
+      return;
+    } else {
+      if (register === 'Student') {
+        evt.preventDefault();
+        window.location = '/student';
+      } else {
+        evt.preventDefault();
+        window.location = '/instructor';
+      }
+    }
+  };
+
+  handleBlur = field => evt => {
+    this.setState({
+      touched: { ...this.state.touched, [field]: true }
+    });
+  };
+
+  canbeSubmitted() {
+    const errors = validate(
+      this.state.first_name,
+      this.state.last_name,
+      this.state.email,
+      this.state.password,
+      this.state.confirm_password
+    );
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  }
+
   render() {
-    // const sel = document.getElementById('classification');
-    // const sel_val = sel.options[sel.selectedIndex].value;
-    // let button = null;
-    // console.log(sel_val);
-    // if (sel_val == 'Student') {
-    //   button = <Button color="primary" type="submit" value="Submit">Sign Up</Button>;
-    // } else {
-    //   button = <Button color="primary" type="submit" value="Submit">Sign Up</Button>;
-    // }
+    const errors = validate(
+      this.state.first_name,
+      this.state.last_name,
+      this.state.email,
+      this.state.password,
+      this.state.confirm_password
+    );
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+
+    const shouldMarkError = field => {
+      const hasError = errors[field];
+      const shouldShow = this.state.touched[field];
+      return hasError ? shouldShow : false;
+    };
 
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: "#34374C" }}>
+        <Navbar fixedTop dark style={{ background: '#34374C' }}>
           <NavbarBrand>
             <a href="/">
-              <img src={ logo } width="131" alt="Pillo"/>
+              <img src={logo} width="131" alt="Pillo" />
             </a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={ this.state.isOpen } navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/login">Login</NavLink>
@@ -80,15 +159,23 @@ class RegisterPage extends React.Component {
           </Collapse>
         </Navbar>
 
-        <Container style={{ textAlign: "center" }}>
+        <Container style={{ textAlign: 'center' }} onSubmit={this.handleSubmit}>
           <Card body>
             <h1>Register</h1>
-            <hr/>
+            <hr />
             <Form>
-            {/* <Form onSubmit={ this.handleSubmit }> */}
+              {/* <Form onSubmit={ this.handleSubmit }> */}
               <FormGroup>
                 <Label for="inputFirstName">First Name</Label>
                 <Input
+                  style={
+                    shouldMarkError('first_name')
+                      ? { borderColor: 'red' }
+                      : { borderColor: '' }
+                  }
+                  value={this.state.first_name}
+                  onChange={this.handleFirstNameChange}
+                  onBlur={this.handleBlur('first_name')}
                   type="text"
                   id="inputFirstName"
                   placeholder="Enter your first name"
@@ -97,6 +184,14 @@ class RegisterPage extends React.Component {
               <FormGroup>
                 <Label for="inputLastName">Last Name</Label>
                 <Input
+                  style={
+                    shouldMarkError('last_name')
+                      ? { borderColor: 'red' }
+                      : { borderColor: '' }
+                  }
+                  value={this.state.last_name}
+                  onChange={this.handleLastNameChange}
+                  onBlur={this.handleBlur('last_name')}
                   type="text"
                   id="inputLastName"
                   placeholder="Enter your last name"
@@ -104,11 +199,31 @@ class RegisterPage extends React.Component {
               </FormGroup>
               <FormGroup>
                 <Label for="inputEmail">Email Address</Label>
-                <Input type="email" id="inputEmail" placeholder="Enter email" />
+                <Input
+                  style={
+                    shouldMarkError('email')
+                      ? { borderColor: 'red' }
+                      : { borderColor: '' }
+                  }
+                  value={this.state.email}
+                  onChange={this.handleEmailChange}
+                  onBlur={this.handleBlur('email')}
+                  type="email"
+                  id="inputEmail"
+                  placeholder="Enter email"
+                />
               </FormGroup>
               <FormGroup>
                 <Label for="inputPassword">Password</Label>
                 <Input
+                  style={
+                    shouldMarkError('password')
+                      ? { borderColor: 'red' }
+                      : { borderColor: '' }
+                  }
+                  value={this.state.password}
+                  onChange={this.handlePasswordChange}
+                  onBlur={this.handleBlur('password')}
                   type="password"
                   id="inputPassword"
                   placeholder="Password"
@@ -117,6 +232,14 @@ class RegisterPage extends React.Component {
               <FormGroup>
                 <Label for="confirmPassword">Confirm Password</Label>
                 <Input
+                  style={
+                    shouldMarkError('confirm_password')
+                      ? { borderColor: 'red' }
+                      : { borderColor: '' }
+                  }
+                  value={this.state.confirm_password}
+                  onChange={this.handleConfirmPasswordChange}
+                  onBlur={this.handleBlur('confirm_password')}
                   type="password"
                   id="confirmPassword"
                   placeholder="Confirm password"
@@ -124,23 +247,41 @@ class RegisterPage extends React.Component {
               </FormGroup>
               <FormGroup>
                 <Label for="classification">Register As</Label>
-                <Input type="select" name="select" id="classification">
-                {/* <Input type="select" name="select" id="classification" value={this.state.value} onChange={this.handleChange}> */}
+                <Input
+                  type="select"
+                  id="classification"
+                  value={this.state.register}
+                  onChange={this.handleRegisterChange}
+                >
                   <option>Student</option>
                   <option>Teacher</option>
                 </Input>
               </FormGroup>
-              <Button color="primary">Sign Up</Button>
-              {/* <Button color="primary" type="submit" value="Submit">Sign Up</Button> */}
+              <Button disabled={isDisabled} color="primary">
+                Sign Up
+              </Button>
             </Form>
-            {/* Temporary */}
-            <a href="/student">Student Home</a>
-            <a href="/instructor">Instructor Home</a>
           </Card>
         </Container>
       </div>
-    )
+    );
   }
+}
+
+function validate(first_name, last_name, email, password, confirm_password) {
+  return {
+    first_name: first_name.length === 0,
+    last_name: last_name.length === 0,
+    email: email.length === 0 || !validateEmail(email),
+    password: password.length === 0,
+    confirm_password:
+      confirm_password != password || confirm_password.length === 0
+  };
+}
+
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
 }
 
 export default RegisterPage;

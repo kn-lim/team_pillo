@@ -1,5 +1,6 @@
 import React from 'react';
-import { 
+import {
+  Alert,
   Button,
   Container,
   Form,
@@ -20,40 +21,68 @@ import logo from '../../images/logo.png';
 class ForgotPasswordPage extends React.Component {
   constructor(props) {
     super(props);
-    
-    this.state = { value: '', isOpen: false };
+
+    this.state = {
+      value: '',
+      isOpen: false,
+      visible: false
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.onDismiss = this.onDismiss.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  handleChange = evt => {
+    this.setState({ value: evt.target.value });
+  };
+
+  handleEmailChange = evt => {
+    this.setState({ email: evt.target.value });
+  };
+
+  handleSubmit = evt => {
+    const { email } = this.state;
+    if (!this.canbeSubmitted()) {
+      evt.preventDefault();
+      return;
+    } else {
+      evt.preventDefault();
+      this.setState({ visible: true });
+    }
+  };
+
+  onDismiss() {
+    this.setState({ visible: false });
   }
 
-  handleSubmit(event) {
-    alert('An email with recovery information has been sent to ' + this.state.value);
-    event.preventDefault();
-  }
-  
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
+  canbeSubmitted() {
+    const errors = validate(this.state.email);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  }
+
   render() {
+    const errors = validate(this.state.email);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: "#34374C" }}>
+        <Navbar fixedTop dark style={{ background: '#34374C' }}>
           <NavbarBrand>
             <a href="/">
-              <img src={ logo } width="131" alt="Pillo"/>
+              <img src={logo} width="131" alt="Pillo" />
             </a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={ this.state.isOpen } navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/login">Login</NavLink>
@@ -63,24 +92,52 @@ class ForgotPasswordPage extends React.Component {
           </Collapse>
         </Navbar>
 
-        <Container style={{ textAlign: "center" }}>
+        <Container style={{ textAlign: 'center' }}>
+          <Alert
+            color="success"
+            isOpen={this.state.visible}
+            toggle={this.onDismiss}
+          >
+            A password reset email has been sent to {this.state.email}!
+          </Alert>
           <Card body>
             <h1 className="display-4">Forgot Your Password?</h1>
-            <hr/>
-            <p className="text-muted">Enter the email address of the account and a password reset email will be sent to you!
+            <hr />
+            <p className="text-muted">
+              Enter the email address of the account and a password reset email
+              will be sent to you!
             </p>
-            <Form onSubmit={ this.handleSubmit }>
+            <Form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <Label for="email">Email Address</Label>
-                <Input value={this.state.value} onChange={this.handleChange} type="email" name="email" id="email" placeholder="Enter your Email Address" />
+                <Input
+                  type="email"
+                  id="forgottenEmail"
+                  placeholder="Enter email"
+                  onChange={this.handleEmailChange}
+                  value={this.state.email}
+                />
               </FormGroup>
-              <Button color="primary" type="submit" value="Submit">Reset Password</Button>
+              <Button disabled={isDisabled} color="primary">
+                Reset Password
+              </Button>
             </Form>
           </Card>
         </Container>
       </div>
-    )
+    );
   }
+}
+
+function validate(email) {
+  return {
+    email: !validateEmail(email)
+  };
+}
+
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
 }
 
 export default ForgotPasswordPage;
