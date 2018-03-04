@@ -15,14 +15,14 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "react-scripts": "^1.1.1",
-    "reactstrap": "^5.0.0-beta",
+    "reactstrap": "^5.0.0-beta.2",
     "redux": "^3.7.2"
   },
   "scripts": {
     "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "lint-staged": {
@@ -32,12 +32,7 @@
     ]
   },
   "devDependencies": {
-    "babel-jest": "^22.4.1",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
     "file-loader": "^1.1.11",
-    "jest": "^22.4.2",
-    "react-test-renderer": "^16.2.0",
     "url-loader": "^1.0.1"
   }
 }
