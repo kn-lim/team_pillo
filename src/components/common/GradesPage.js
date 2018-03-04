@@ -7,11 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
   Card,
   CardBody,
   Table,
@@ -40,11 +35,9 @@ class GradesPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: '#34374C' }}>
-          <NavbarBrand>
-            <a href="/">
-              <img src={logo} width="131" alt="Pillo" />
-            </a>
+        <Navbar dark style={{ background: '#34374C' }}>
+          <NavbarBrand href="/">
+            <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
