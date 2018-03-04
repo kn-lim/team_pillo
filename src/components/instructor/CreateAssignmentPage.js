@@ -122,8 +122,11 @@ class CreateAssignmentPage extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink href="/class">Class</NavLink>
+                <NavLink href="/create_class">Class List</NavLink>
+                <NavLink href="/create_assignment">Create Assignment</NavLink>
+                <NavLink href="/grades">Grades</NavLink>
+                <NavLink href="/">Log Out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

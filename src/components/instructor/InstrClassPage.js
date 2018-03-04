@@ -83,6 +83,7 @@ class InstrClassPage extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavLink href="/class">Class</NavLink>
                 <NavLink href="/create_class">Class List</NavLink>
                 <NavLink href="/create_assignment">Create Assignment</NavLink>
                 <NavLink href="/grades">Grades</NavLink>
@@ -113,7 +114,7 @@ class InstrClassPage extends React.Component {
                     <ListGroupLink text="Group 10" linkTo="/group" />
                   </ListGroup>
                 </Col>
-                <Col className="text-left">
+                <Col>
                   <h3>Announcements</h3>
                   <hr />
                   <div>
@@ -129,9 +130,7 @@ class InstrClassPage extends React.Component {
                   <Announcement
                     title="PA3"
                     date="Feb. 18, 2018"
-                    description="                    Convert your PA2 hard-coded content such as to do list, chat
-                    messages, to JavaScript objects. Then, use JavaScript to
-                    populate the content to HTML."
+                    description="Convert your PA2 hard-coded content such as to do list, chat messages, to JavaScript objects. Then, use JavaScript to populate the content to HTML."
                   />
                   <Button
                     color="primary"

@@ -44,6 +44,7 @@ class InstrClassListPage extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavLink href="/class">Class</NavLink>
                 <NavLink href="/create_class">Class List</NavLink>
                 <NavLink href="/create_assignment">Create Assignment</NavLink>
                 <NavLink href="/grades">Grades</NavLink>

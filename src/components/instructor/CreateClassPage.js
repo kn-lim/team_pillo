@@ -77,15 +77,15 @@ class CreateClassPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/">
+          <NavbarBrand href="/instructor">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink href="/create_class">Create Class</NavLink>
+                <NavLink href="/">Log Out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
