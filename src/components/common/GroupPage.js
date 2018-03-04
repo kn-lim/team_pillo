@@ -52,6 +52,13 @@ class GroupPage extends React.Component {
 
     this.toggleMemberModal = this.toggleMemberModal.bind(this);
     this.toggleChecklistModal = this.toggleChecklistModal.bind(this);
+
+    this.handleAddFileClick = this.handleAddFileClick.bind(this);
+    this.handleAddItemSubmit = this.handleAddItemSubmit.bind(this);
+    this.handleAddMemberSubmit = this.handleAddMemberSubmit.bind(this);
+    this.handleChecklistChange = this.handleChecklistChange.bind(this);
+    this.handleFileChange = this.handleFileChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
   }
 
   toggle() {
@@ -60,15 +67,15 @@ class GroupPage extends React.Component {
     });
   }
 
-  handleNameChange = evt => {
+  handleNameChange(evt) {
     this.setState({ name: evt.target.value });
-  };
-  handleFileChange = evt => {
+  }
+  handleFileChange(evt) {
     this.setState({ file: evt.target.value });
-  };
-  handleChecklistChange = evt => {
+  }
+  handleChecklistChange(evt) {
     this.setState({ checklist: evt.target.value });
-  };
+  }
 
   toggleMemberModal() {
     this.setState({
@@ -83,7 +90,7 @@ class GroupPage extends React.Component {
     });
   }
 
-  handleAddMemberSubmit = evt => {
+  handleAddMemberSubmit(evt) {
     if (!this.state.member4) {
       this.setState({
         member4: true,
@@ -103,9 +110,9 @@ class GroupPage extends React.Component {
         });
       }
     }
-  };
+  }
 
-  handleAddItemSubmit = evt => {
+  handleAddItemSubmit(evt) {
     if (!this.state.checklist3) {
       this.setState({
         checklist3: true,
@@ -117,9 +124,9 @@ class GroupPage extends React.Component {
         checklistModal: !this.state.checklistModal
       });
     }
-  };
+  }
 
-  handleAddFileClick = evt => {
+  handleAddFileClick(evt) {
     if (!this.state.file2) {
       this.setState({
         file2: true,
@@ -137,7 +144,7 @@ class GroupPage extends React.Component {
         return;
       }
     }
-  };
+  }
 
   render() {
     return (

@@ -9,6 +9,8 @@ class Checkbox extends React.Component {
       labelState: true,
       labelDescription: props.labelDescription
     };
+
+    this.toggle = this.toggle.bind(this);
   }
 
   toggle(event) {

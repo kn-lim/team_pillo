@@ -45,6 +45,14 @@ class ForumPage extends React.Component {
       set_description: ''
     };
     this.toggleNav = this.toggleNav.bind(this);
+
+    this.handleClick1 = this.handleClick1.bind(this);
+    this.handleClick2 = this.handleClick2.bind(this);
+    this.handleClick3 = this.handleClick3.bind(this);
+    this.handleClick4 = this.handleClick4.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
   }
 
   toggle() {
@@ -62,54 +70,54 @@ class ForumPage extends React.Component {
     });
   }
 
-  handleTitleChange = evt => {
+  handleTitleChange(evt) {
     this.setState({ title: evt.target.value });
-  };
-  handleDescriptionChange = evt => {
+  }
+  handleDescriptionChange(evt) {
     this.setState({ description: evt.target.value });
-  };
+  }
 
-  handleSubmit = evt => {
+  handleSubmit(evt) {
     this.setState({
       set_title: this.state.title,
       set_description: this.state.description,
       link4: true,
       modal: !this.state.modal
     });
-  };
+  }
 
-  handleClick1 = evt => {
+  handleClick1(evt) {
     this.setState({
       post1: true,
       post2: false,
       post3: false,
       post4: false
     });
-  };
-  handleClick2 = evt => {
+  }
+  handleClick2(evt) {
     this.setState({
       post1: false,
       post2: true,
       post3: false,
       post4: false
     });
-  };
-  handleClick3 = evt => {
+  }
+  handleClick3(evt) {
     this.setState({
       post1: false,
       post2: false,
       post3: true,
       post4: false
     });
-  };
-  handleClick4 = evt => {
+  }
+  handleClick4(evt) {
     this.setState({
       post1: false,
       post2: false,
       post3: false,
       post4: true
     });
-  };
+  }
 
   render() {
     return (

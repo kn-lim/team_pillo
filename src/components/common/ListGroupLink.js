@@ -9,11 +9,13 @@ class ListGroupLink extends React.Component {
       text: props.text,
       linkTo: props.linkTo
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = evt => {
+  handleClick(evt) {
     window.location = this.state.linkTo;
-  };
+  }
 
   render() {
     return (

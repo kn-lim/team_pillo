@@ -7,6 +7,7 @@ class CheckboxList extends Component {
     super(props, context);
 
     this.createTasks = this.createTasks.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   createTasks(item) {
