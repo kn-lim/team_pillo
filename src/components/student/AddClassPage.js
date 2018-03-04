@@ -13,7 +13,8 @@ import {
   Label,
   Input,
   Card,
-  Container
+  Container,
+  Alert
 } from 'reactstrap';
 import logo from '../../images/logo.png';
 
@@ -23,10 +24,39 @@ class AddClassPage extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      code: '',
+      visible: false
     };
+
+    this.onDismiss = this.onDismiss.bind(this);
   }
-  
+
+  handleCodeChange = evt => {
+    this.setState({ code: evt.target.value });
+  };
+
+  handleSubmit = evt => {
+    const { code } = this.state;
+    if (!this.canbeSubmitted()) {
+      evt.preventDefault();
+      return;
+    } else {
+      evt.preventDefault();
+      this.setState({ visible: true });
+    }
+  };
+
+  onDismiss() {
+    this.setState({ visible: false });
+  }
+
+  canbeSubmitted() {
+    const errors = validate(this.state.code);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    return !isDisabled;
+  }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -34,16 +64,19 @@ class AddClassPage extends React.Component {
   }
 
   render() {
+    const errors = validate(this.state.code);
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: "#34374C" }} expand="md">
+        <Navbar fixedTop dark style={{ background: '#34374C' }} expand="md">
           <NavbarBrand>
             <a href="/student">
-              <img src={ logo } width="131" alt="Pillo"/>
+              <img src={logo} width="131" alt="Pillo" />
             </a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={ this.state.isOpen } navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/add_class">Add Class</NavLink>
@@ -53,23 +86,43 @@ class AddClassPage extends React.Component {
           </Collapse>
         </Navbar>
 
-        <Container style={{ textAlign: "center" }}>
+        <Container style={{ textAlign: 'center' }}>
+          <Alert
+            color="success"
+            isOpen={this.state.visible}
+            toggle={this.onDismiss}
+          >
+            You have successfully joined CSE134B!
+          </Alert>
           <Card body>
             <h1>Join a Class</h1>
-            <hr/>
+            <hr />
             <p color="muted">Enter the 5-character course ID code:</p>
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
               <FormGroup>
                 <Label for="classCode">Class Code</Label>
-                <Input type="text" id="classCode"/>
+                <Input
+                  type="text"
+                  id="classCode"
+                  onChange={this.handleCodeChange}
+                  value={this.state.code}
+                />
               </FormGroup>
-              <Button color="primary">Join Class</Button>
+              <Button disabled={isDisabled} color="primary">
+                Join Class
+              </Button>
             </Form>
           </Card>
         </Container>
       </div>
-    )
+    );
   }
+}
+
+function validate(code) {
+  return {
+    code: code.length !== 5
+  };
 }
 
 export default AddClassPage;

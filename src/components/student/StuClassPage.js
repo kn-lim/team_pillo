@@ -13,10 +13,17 @@ import {
   Row,
   Col,
   Container,
+  Form,
+  FormGroup,
+  Label,
+  Input,
   ListGroup,
-  ListGroupItem
+  ListGroupItem,
+  CardTitle,
+  CardSubtitle
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import ListGroupLink from '../common/ListGroupLink';
 
 class StuClassPage extends React.Component {
   constructor(props) {
@@ -27,7 +34,7 @@ class StuClassPage extends React.Component {
       isOpen: false
     };
   }
-  
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -37,14 +44,14 @@ class StuClassPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: "#34374C" }}>
+        <Navbar fixedTop dark style={{ background: '#34374C' }}>
           <NavbarBrand>
             <a href="/student">
-              <img src={ logo } width="131" alt="Pillo"/>
+              <img src={logo} width="131" alt="Pillo" />
             </a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={ this.state.isOpen } navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/forum">Forum</NavLink>
@@ -61,73 +68,53 @@ class StuClassPage extends React.Component {
             <CardBody>
               <h1>CSE 134B</h1>
               <p color="muted">Winter 2018</p>
-              <hr/>
+              <hr />
               <Row>
                 <Col xs="4">
                   <ListGroup>
-                    <ListGroupItem tag="a" href="/group">
-                      Group 1
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 2
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 3
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 4
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 5
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 6
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 7
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 8
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 9
-                    </ListGroupItem>
-                    <ListGroupItem disabled tag="a" href="/group">
-                      Group 10
-                    </ListGroupItem>
+                    <ListGroupLink text="Group 1" linkTo="/group" />
+                    <ListGroupLink text="Group 2" linkTo="/group" />
+                    <ListGroupLink text="Group 3" linkTo="/group" />
+                    <ListGroupLink text="Group 4" linkTo="/group" />
+                    <ListGroupLink text="Group 5" linkTo="/group" />
+                    <ListGroupLink text="Group 6" linkTo="/group" />
+                    <ListGroupLink text="Group 7" linkTo="/group" />
+                    <ListGroupLink text="Group 8" linkTo="/group" />
+                    <ListGroupLink text="Group 9" linkTo="/group" />
+                    <ListGroupLink text="Group 10" linkTo="/group" />
                   </ListGroup>
                 </Col>
-                <Col className="text-left">
+                <Col style={{ textAlign: 'left' }}>
                   <h3>Announcements</h3>
-                  <hr/>
+                  <hr />
                   <p>PA3</p>
                   <p color="muted">Feb. 18,2018</p>
                   <ul>
                     <li>
-                      Convert your PA2 hard-coded content such as to do list, chat
-                      messages, to JavaScript objects. Then, use JavaScript to
-                      populate the content to HTML.
+                      Convert your PA2 hard-coded content such as to do list,
+                      chat messages, to JavaScript objects. Then, use JavaScript
+                      to populate the content to HTML.
                     </li>
                     <li>
                       Add in the JavaScript to make your page interactive to
                       user's events such as button-clicks (add, remove, update,
-                      etc.). You do not need to store any data on the server. You
-                      can use user's data to simulate event handling.
+                      etc.). You do not need to store any data on the server.
+                      You can use user's data to simulate event handling.
                     </li>
                   </ul>
                 </Col>
               </Row>
               <br />
               <Row>
-                <Button className="btn-block" color="primary" href="/forum">
-                  Class Forum
-                </Button>
+                <Col xs="12">
+                  <ListGroupLink text="Class Forum" linkTo="/forum" />
+                </Col>
               </Row>
             </CardBody>
           </Card>
         </Container>
       </div>
-    )
+    );
   }
 }
 

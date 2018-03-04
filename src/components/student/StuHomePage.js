@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   Collapse,
   Navbar,
   NavbarToggler,
@@ -18,6 +19,8 @@ import {
   Container
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import Checkbox from '../common/Checkbox';
+import CheckboxList from '../common/CheckboxList';
 
 class StuHomePage extends React.Component {
   constructor(props) {
@@ -25,27 +28,84 @@ class StuHomePage extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+
+      checkboxitems1: [
+        { text: 'Create mockup of pages for app', key: 1 },
+        { text: 'Code the pages in HTML/CSS', key: 2 },
+        { text: 'Add Javascript functionality to website', key: 3 }
+      ],
+
+      checkboxitems2: [
+        { text: 'PA1', key: 1 },
+        { text: 'PA2', key: 2 },
+        { text: 'PA3', key: 3 }
+      ]
     };
+
+    this.addCheckbox1 = this.addCheckbox1.bind(this);
+    this.addCheckbox2 = this.addCheckbox2.bind(this);
   }
-  
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
+  addCheckbox1(e) {
+    var checkboxArray = this.state.checkboxitems1;
+
+    if (this._inputElement1.value !== '') {
+      checkboxArray.push({
+        text: this._inputElement1.value,
+        key: Date.now()
+      });
+
+      this.setState({
+        checkboxitems1: checkboxArray
+      });
+
+      this._inputElement1.value = '';
+    }
+
+    console.log(checkboxArray);
+
+    e.preventDefault();
+  }
+
+  addCheckbox2(e) {
+    var checkboxArray = this.state.checkboxitems2;
+
+    if (this._inputElement2.value !== '') {
+      checkboxArray.push({
+        text: this._inputElement2.value,
+        key: Date.now()
+      });
+
+      this.setState({
+        checkboxitems2: checkboxArray
+      });
+
+      this._inputElement2.value = '';
+    }
+
+    console.log(checkboxArray);
+
+    e.preventDefault();
+  }
+
   render() {
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: "#34374C" }}>
+        <Navbar fixedTop dark style={{ background: '#34374C' }}>
           <NavbarBrand>
             <a href="/student">
-              <img src={ logo } width="131" alt="Pillo"/>
+              <img src={logo} width="131" alt="Pillo" />
             </a>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={ this.state.isOpen } navbar>
+          <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/add_class">Add Class</NavLink>
@@ -67,7 +127,7 @@ class StuHomePage extends React.Component {
                   <a href="/stu_class">CSE 134B</a>
                 </CardTitle>
                 <CardSubtitle>Winter 2018</CardSubtitle>
-                <hr/>
+                <hr />
                 <div className="text-left">
                   <p color="muted">Members:</p>
                   <ul>
@@ -76,20 +136,14 @@ class StuHomePage extends React.Component {
                     <li>Perry Liu</li>
                   </ul>
                   <p color="muted">Checklist:</p>
-                  <FormGroup check>
-                    <Input type="checkbox" id="checklist1" />
-                    <Label for="checklist1">Create mockup of pages for app</Label>
-                  </FormGroup>
-                  <FormGroup check>
-                    <Input type="checkbox" id="checklist2" />
-                    <Label for="checklist2">Code the pages in HTML/CSS</Label>
-                  </FormGroup>
-                  <FormGroup check>
-                    <Input type="checkbox" id="checklist3" />
-                    <Label for="checklist3">
-                      Add Javascript functionality to website
-                    </Label>
-                  </FormGroup>
+                  <form>
+                    <CheckboxList list={this.state.checkboxitems1} />
+                    <input
+                      ref={a => (this._inputElement1 = a)}
+                      placeholder="enter task"
+                    />{' '}
+                    <Button onClick={this.addCheckbox1}>Add Checkbox</Button>
+                  </form>
                 </div>
               </Card>
             </Col>
@@ -99,32 +153,28 @@ class StuHomePage extends React.Component {
                   <a href="/stu_class">COGS 108</a>
                 </CardTitle>
                 <CardSubtitle>Winter 2018</CardSubtitle>
-                <hr/>
+                <hr />
                 <div className="text-left">
                   <p color="muted">Members:</p>
                   <ul>
                     <li>Kevin Lim</li>
                   </ul>
                   <p color="muted">Checklist:</p>
-                  <FormGroup check>
-                    <Input type="checkbox" id="checklist4" />
-                    <Label for="checklist1">PA1</Label>
-                  </FormGroup>
-                  <FormGroup check>
-                    <Input type="checkbox" id="checklist5" />
-                    <Label for="checklist2">PA2</Label>
-                  </FormGroup>
-                  <FormGroup check>
-                    <Input type="checkbox" id="checklist6" />
-                    <Label for="checklist3">PA3</Label>
-                  </FormGroup>
+                  <form>
+                    <CheckboxList list={this.state.checkboxitems2} />
+                    <input
+                      ref={a => (this._inputElement2 = a)}
+                      placeholder="enter task"
+                    />{' '}
+                    <Button onClick={this.addCheckbox2}>Add Checkbox</Button>
+                  </form>
                 </div>
               </Card>
             </Col>
           </Row>
         </Container>
       </div>
-    )
+    );
   }
 }
 
