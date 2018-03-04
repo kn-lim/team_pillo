@@ -74,11 +74,9 @@ class LoginPage extends React.Component {
 
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: '#34374C' }}>
-          <NavbarBrand>
-            <a href="/">
-              <img src={logo} width="131" alt="Pillo" />
-            </a>
+        <Navbar dark style={{ background: '#34374C' }}>
+          <NavbarBrand href="/">
+            <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
