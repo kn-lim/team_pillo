@@ -47,7 +47,7 @@ class RegisterPage extends React.Component {
       email: '',
       password: '',
       confirm_password: '',
-      register: false,
+      register: 'Student',
       touched: {
         first_name: false,
         last_name: false,
