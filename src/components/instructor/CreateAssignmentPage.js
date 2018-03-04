@@ -37,6 +37,14 @@ class CreateAssignmentPage extends React.Component {
 
     this.onDismiss = this.onDismiss.bind(this);
     this.onDismiss2 = this.onDismiss2.bind(this);
+
+    this.handleCheckpoint1Change = this.handleCheckpoint1Change.bind(this);
+    this.handleCheckpoint2Change = this.handleCheckpoint2Change.bind(this);
+    this.handleCheckpoint3Change = this.handleCheckpoint3Change.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
   }
 
   toggle() {
@@ -45,25 +53,25 @@ class CreateAssignmentPage extends React.Component {
     });
   }
 
-  handleTitleChange = evt => {
+  handleTitleChange(evt) {
     this.setState({ title: evt.target.value });
-  };
+  }
 
-  handleDescriptionChange = evt => {
+  handleDescriptionChange(evt) {
     this.setState({ description: evt.target.value });
-  };
+  }
 
-  handleCheckpoint1Change = evt => {
+  handleCheckpoint1Change(evt) {
     this.setState({ checkpoint1: evt.target.value });
-  };
-  handleCheckpoint2Change = evt => {
+  }
+  handleCheckpoint2Change(evt) {
     this.setState({ checkpoint2: evt.target.value });
-  };
-  handleCheckpoint3Change = evt => {
+  }
+  handleCheckpoint3Change(evt) {
     this.setState({ checkpoint3: evt.target.value });
-  };
+  }
 
-  handleSubmit = evt => {
+  handleSubmit(evt) {
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
@@ -71,15 +79,15 @@ class CreateAssignmentPage extends React.Component {
       evt.preventDefault();
       this.setState({ visible: true });
     }
-  };
+  }
 
-  handleClick = evt => {
+  handleClick(evt) {
     if (this.state.checkpointToggle) {
       this.setState({ checkpointToggle: false });
     } else {
       this.setState({ visible2: true });
     }
-  };
+  }
 
   onDismiss() {
     this.setState({ visible: false });

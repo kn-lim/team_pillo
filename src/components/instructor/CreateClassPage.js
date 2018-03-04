@@ -31,6 +31,9 @@ class CreateClassPage extends React.Component {
     };
 
     this.onDismiss = this.onDismiss.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInfoChange = this.handleInfoChange.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
   }
 
   toggle() {
@@ -39,15 +42,15 @@ class CreateClassPage extends React.Component {
     });
   }
 
-  handleTitleChange = evt => {
+  handleTitleChange(evt) {
     this.setState({ title: evt.target.value });
-  };
+  }
 
-  handleDescriptionChange = evt => {
+  handleDescriptionChange(evt) {
     this.setState({ description: evt.target.value });
-  };
+  }
 
-  handleSubmit = evt => {
+  handleSubmit(evt) {
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
@@ -58,7 +61,7 @@ class CreateClassPage extends React.Component {
         visible: true
       });
     }
-  };
+  }
 
   onDismiss() {
     this.setState({ visible: false });

@@ -33,6 +33,8 @@ class InstrClassPage extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.toggleNav = this.toggleNav.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInfoChange = this.handleInfoChange.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
 
     this.state = {
       isOpen: false,
@@ -63,14 +65,14 @@ class InstrClassPage extends React.Component {
     });
   }
 
-  handleTitleChange = evt => {
+  handleTitleChange(evt) {
     this.setState({ announcementTitle: evt.target.value });
-  };
-  handleInfoChange = evt => {
+  }
+  handleInfoChange(evt) {
     this.setState({ announcementInfo: evt.target.value });
-  };
+  }
 
-  handleSubmit = evt => {
+  handleSubmit(evt) {
     this.setState({
       announcementToggle: true,
       completeTitle: this.state.announcementTitle,
@@ -78,7 +80,7 @@ class InstrClassPage extends React.Component {
       announcementDate: 'Mar. 4, 2018',
       modal: !this.state.modal
     });
-  };
+  }
 
   render() {
     return (
