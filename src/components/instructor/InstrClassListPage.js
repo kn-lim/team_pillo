@@ -7,10 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button,
-  Form,
-  FormGroup,
-  Label,
   Input,
   Card,
   CardBody,
@@ -40,11 +36,9 @@ class InstrClassListPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop dark style={{ background: '#34374C' }}>
-          <NavbarBrand>
-            <a href="/instructor">
-              <img src={logo} width="131" alt="Pillo" />
-            </a>
+        <Navbar dark style={{ background: '#34374C' }}>
+          <NavbarBrand href="/instructor">
+            <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -78,19 +72,19 @@ class InstrClassListPage extends React.Component {
                       <tr>
                         <td>Ken Truong</td>
                         <td>
-                          <Input type="checkbox" checked />
+                          <Input type="checkbox" />
                         </td>
                       </tr>
                       <tr>
                         <td>Kevin Lim</td>
                         <td>
-                          <Input type="checkbox" checked />
+                          <Input type="checkbox" />
                         </td>
                       </tr>
                       <tr>
                         <td>Perry Liu</td>
                         <td>
-                          <Input type="checkbox" checked />
+                          <Input type="checkbox" />
                         </td>
                       </tr>
                     </tbody>
