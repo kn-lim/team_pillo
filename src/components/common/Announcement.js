@@ -22,10 +22,4 @@ class Announcement extends React.Component {
   }
 }
 
-Announcement.propTypes = {
-  title: PropTypes.string,
-  date: PropTypes.string,
-  description: PropTypes.string
-};
-
 export default Announcement;
