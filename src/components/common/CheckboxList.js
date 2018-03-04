@@ -17,6 +17,10 @@ class CheckboxList extends Component {
     );
   }
 
+  delete(key) {
+    this.props.delete(key);
+  }
+
   render() {
     var checkboxList = this.props.list;
     var listItems = checkboxList.map(this.createTasks);

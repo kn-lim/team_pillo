@@ -16,6 +16,7 @@ import {
   Container
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import Checkbox from '../common/Checkbox';
 import CheckboxList from '../common/CheckboxList';
 
 class StuHomePage extends React.Component {
@@ -41,6 +42,9 @@ class StuHomePage extends React.Component {
 
     this.addCheckbox1 = this.addCheckbox1.bind(this);
     this.addCheckbox2 = this.addCheckbox2.bind(this);
+
+    this.deleteItem1 = this.deleteItem1.bind(this);
+    this.deleteItem2 = this.deleteItem2.bind(this);
   }
 
   toggle() {
@@ -91,6 +95,26 @@ class StuHomePage extends React.Component {
     e.preventDefault();
   }
 
+  deleteItem1(key) {
+    var filteredItems = this.state.checkboxitems1.filter(function(item) {
+      return item.key !== key;
+    });
+
+    this.setState({
+      checkboxitems1: filteredItems
+    });
+  }
+
+  deleteItem2(key) {
+    var filteredItems = this.state.checkboxitems2.filter(function(item) {
+      return item.key !== key;
+    });
+
+    this.setState({
+      checkboxitems2: filteredItems
+    });
+  }
+
   render() {
     return (
       <div>
@@ -133,7 +157,10 @@ class StuHomePage extends React.Component {
                   </ul>
                   <p color="muted">Checklist:</p>
                   <form>
-                    <CheckboxList list={this.state.checkboxitems1} />
+                    <CheckboxList
+                      list={this.state.checkboxitems1}
+                      delete={this.deleteItem1}
+                    />
                     <input
                       ref={a => (this._inputElement1 = a)}
                       placeholder="enter task"
@@ -157,7 +184,10 @@ class StuHomePage extends React.Component {
                   </ul>
                   <p color="muted">Checklist:</p>
                   <form>
-                    <CheckboxList list={this.state.checkboxitems2} />
+                    <CheckboxList
+                      list={this.state.checkboxitems1}
+                      delete={this.deleteItem1}
+                    />
                     <input
                       ref={a => (this._inputElement2 = a)}
                       placeholder="enter task"
