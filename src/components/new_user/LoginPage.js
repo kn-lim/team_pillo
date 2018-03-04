@@ -49,7 +49,7 @@ class LoginPage extends React.Component {
       return;
     } else {
       evt.preventDefault();
-      window.location = '/student_home';
+      window.location = '/student';
     }
   };
   handleInstructorSubmit = evt => {
@@ -58,7 +58,7 @@ class LoginPage extends React.Component {
       return;
     } else {
       evt.preventDefault();
-      window.location = '/instructor_home';
+      window.location = '/instructor';
     }
   };
 

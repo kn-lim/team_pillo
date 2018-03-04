@@ -32,6 +32,7 @@ class ForumPage extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
+      isNavOpen: false,
       post1: false,
       post2: false,
       post3: false,
@@ -43,6 +44,7 @@ class ForumPage extends React.Component {
       set_title: '',
       set_description: ''
     };
+    this.toggleNav = this.toggleNav.bind(this);
   }
 
   toggle() {
@@ -51,6 +53,12 @@ class ForumPage extends React.Component {
       modal: !this.state.modal,
       title: '',
       description: ''
+    });
+  }
+
+  toggleNav() {
+    this.setState({
+      isNavOpen: !this.state.isNavOpen
     });
   }
 
@@ -110,8 +118,8 @@ class ForumPage extends React.Component {
           <NavbarBrand href="/stu_class">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={this.toggleNav} />
+          <Collapse isOpen={this.state.isNavOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/stu_class">Class</NavLink>

@@ -222,7 +222,7 @@ class GroupPage extends React.Component {
                   <h4>Checklist:</h4>
                   <hr />
                   <FormGroup check>
-                    <Input type="checkbox" id="checklist1" checked />
+                    <Input type="checkbox" id="checklist1" />
                     <Label for="checklist1">
                       Create mockup of pages for app
                     </Label>

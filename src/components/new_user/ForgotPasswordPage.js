@@ -24,6 +24,7 @@ class ForgotPasswordPage extends React.Component {
 
     this.state = {
       value: '',
+      email: '',
       isOpen: false,
       visible: false
     };

@@ -31,10 +31,12 @@ class InstrClassPage extends React.Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       isOpen: false,
+      isNavOpen: false,
       modal: false,
       announcementToggle: false,
       announcementTitle: '',
@@ -52,6 +54,12 @@ class InstrClassPage extends React.Component {
       announcementToggle: false,
       announcementTitle: '',
       announcementInfo: ''
+    });
+  }
+
+  toggleNav() {
+    this.setState({
+      isNavOpen: !this.state.isNavOpen
     });
   }
 
@@ -79,8 +87,8 @@ class InstrClassPage extends React.Component {
           <NavbarBrand href="/instructor">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler onClick={this.toggleNav} />
+          <Collapse isOpen={this.state.isNavOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/instr_class">Class</NavLink>
