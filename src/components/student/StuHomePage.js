@@ -8,9 +8,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  FormGroup,
-  Label,
-  Input,
   Card,
   CardTitle,
   CardSubtitle,
@@ -19,7 +16,6 @@ import {
   Container
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-import Checkbox from '../common/Checkbox';
 import CheckboxList from '../common/CheckboxList';
 
 class StuHomePage extends React.Component {

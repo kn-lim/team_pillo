@@ -1,18 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Row,
-  Col,
-  Container
-} from 'reactstrap';
+import { FormGroup } from 'reactstrap';
 import Checkbox from './Checkbox';
 
 class CheckboxList extends Component {
