@@ -30,13 +30,15 @@ class AddClassPage extends React.Component {
     };
 
     this.onDismiss = this.onDismiss.bind(this);
+    this.handleCodeChange = this.handleCodeChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleCodeChange = evt => {
+  handleCodeChange(evt) {
     this.setState({ code: evt.target.value });
-  };
+  }
 
-  handleSubmit = evt => {
+  handleSubmit(evt) {
     if (!this.canbeSubmitted()) {
       evt.preventDefault();
       return;
@@ -44,7 +46,7 @@ class AddClassPage extends React.Component {
       evt.preventDefault();
       this.setState({ visible: true });
     }
-  };
+  }
 
   onDismiss() {
     this.setState({ visible: false });
