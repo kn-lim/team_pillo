@@ -132,7 +132,7 @@ class CreateAssignmentPage extends React.Component {
               <NavItem>
                 <NavLink href="/instr_class">Class</NavLink>
                 <NavLink href="/forum">Forum</NavLink>
-                <NavLink href="/create_class">Class List</NavLink>
+                <NavLink href="/class_list">Class List</NavLink>
                 <NavLink href="/create_assignment">Create Assignment</NavLink>
                 <NavLink href="/grades">Grades</NavLink>
                 <NavLink href="/">Log Out</NavLink>

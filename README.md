@@ -17,7 +17,7 @@ By Kevin Lim, Ken Truong and Perry Liu
 ## How to Run
 Use this to install all the packages needed:
 ```
-npm install --save react react-dom react-scripts react-router react-router-dom react-router-redux react-router-config bootstrap reactstrap@next redux react-redux
+npm install --save react react-dom react-scripts react-router react-router-dom react-router-redux react-router-config bootstrap reactstrap@5.0.0-beta redux react-redux
 
 npm install --save-dev url-loader file-loader
 ```
@@ -30,8 +30,22 @@ Then go to your Webpack config located at:
 Add this to webpack.config.js:
 ```
 module: {
-    loaders: [
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
-    ]
-  }
+  loaders: [
+    { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
+  ]
+}
 ```
+
+## How to Test
+Before starting the testing procedure, you must ensure that your package.json have:
+```
+"scripts": {
+  "test": "react-scripts test --env=jsdom",
+}
+```
+If you are on a Mac, ensure that you have Homebrew installed and run this command:
+```
+brew install watchman
+```
+
+Test .js files are located in src/test

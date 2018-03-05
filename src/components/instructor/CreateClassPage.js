@@ -31,9 +31,10 @@ class CreateClassPage extends React.Component {
     };
 
     this.onDismiss = this.onDismiss.bind(this);
+    this.canbeSubmitted = this.canbeSubmitted.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInfoChange = this.handleInfoChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
   }
 
   toggle() {
