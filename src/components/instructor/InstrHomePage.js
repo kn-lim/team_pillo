@@ -13,11 +13,12 @@ import {
   CardSubtitle,
   Row,
   Col,
-  Container
+  Container,
+  ListGroupItem
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-import ListGroupLink from '../common/ListGroupLink';
-
+import { NavLink as RRNavLink } from 'react-router-dom';
+import Username from '../common/Username';
 class InstrHomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -38,15 +39,19 @@ class InstrHomePage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/instructor">
+          <NavbarBrand tag={RRNavLink} to="/instructor">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/create_class">Create Class</NavLink>
-                <NavLink href="/">Log Out</NavLink>
+                <NavLink tag={RRNavLink} to="/create_class">
+                  Create Class
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/">
+                  Log Out
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -54,29 +59,51 @@ class InstrHomePage extends React.Component {
 
         <Container>
           <Row>
-            <h1>Hello, instructor!</h1>
+            <Username />{' '}
           </Row>
           <br />
           <Row>
             <Col>
               <Card body>
                 <CardTitle>
-                  <a href="/instr_class">CSE 134B</a>
+                  <NavLink tag={RRNavLink} to="/instr_class">
+                    CSE 134B
+                  </NavLink>
                 </CardTitle>
                 <CardSubtitle>Winter 2018</CardSubtitle>
                 <hr />
                 <div style={{ textAlign: 'center' }}>
                   <ListGroup>
-                    <ListGroupLink text="Group 1" linkTo="/group" />
-                    <ListGroupLink text="Group 2" linkTo="/group" />
-                    <ListGroupLink text="Group 3" linkTo="/group" />
-                    <ListGroupLink text="Group 4" linkTo="/group" />
-                    <ListGroupLink text="Group 5" linkTo="/group" />
-                    <ListGroupLink text="Group 6" linkTo="/group" />
-                    <ListGroupLink text="Group 7" linkTo="/group" />
-                    <ListGroupLink text="Group 8" linkTo="/group" />
-                    <ListGroupLink text="Group 9" linkTo="/group" />
-                    <ListGroupLink text="Group 10" linkTo="/group" />
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 1
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 2
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 3
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 4
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 5
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 6
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 7
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 8
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 9
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 10
+                    </ListGroupItem>
                   </ListGroup>
                 </div>
               </Card>
@@ -84,17 +111,29 @@ class InstrHomePage extends React.Component {
             <Col>
               <Card body>
                 <CardTitle>
-                  <a href="/instr_class">COGS 108</a>
+                  <NavLink tag={RRNavLink} to="/instr_class">
+                    COGS 108
+                  </NavLink>
                 </CardTitle>
                 <CardSubtitle>Winter 2018</CardSubtitle>
                 <hr />
                 <div style={{ textAlign: 'center' }}>
                   <ListGroup>
-                    <ListGroupLink text="Group 1" linkTo="/group" />
-                    <ListGroupLink text="Group 2" linkTo="/group" />
-                    <ListGroupLink text="Group 3" linkTo="/group" />
-                    <ListGroupLink text="Group 4" linkTo="/group" />
-                    <ListGroupLink text="Group 5" linkTo="/group" />
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 1
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 2
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 3
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 4
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 5
+                    </ListGroupItem>
                   </ListGroup>
                 </div>
               </Card>

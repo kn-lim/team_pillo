@@ -24,7 +24,11 @@ import {
   ModalFooter
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-
+import { NavLink as RRNavLink } from 'react-router-dom';
+import AddCheckButton from './AddCheckButton';
+import CheckboxList2 from './CheckboxList2';
+import AddListItem from './AddListItem';
+import MemberList from './MemberList';
 class GroupPage extends React.Component {
   constructor(props) {
     super(props);
@@ -150,17 +154,25 @@ class GroupPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/stu_class">
+          <NavbarBrand tag={RRNavLink} to="/stu_class">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/stu_class">Class</NavLink>
-                <NavLink href="/forum">Forum</NavLink>
-                <NavLink href="/grades">Grades</NavLink>
-                <NavLink href="/">Log Out</NavLink>
+                <NavLink tag={RRNavLink} to="/stu_class">
+                  Class
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/forum">
+                  Forum
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/grades">
+                  Grades
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/">
+                  Log Out
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -179,9 +191,9 @@ class GroupPage extends React.Component {
                     <li>Kevin Lim</li>
                     <li>Ken Truong</li>
                     <li>Perry Liu</li>
-                    <li hidden={!this.state.member4}>{this.state.name4}</li>
-                    <li hidden={!this.state.member5}>{this.state.name5}</li>
+                    <MemberList />
                   </ul>
+                  {/*
                   <Button
                     onClick={this.toggleMemberModal}
                     color="primary"
@@ -189,6 +201,8 @@ class GroupPage extends React.Component {
                   >
                     Add Member
                   </Button>{' '}
+                  */}
+                  <AddListItem />
                   {/*     <Button color="danger" id="remove_member"> 
                     Remove Member
                   </Button> */}
@@ -246,31 +260,8 @@ class GroupPage extends React.Component {
                   </FormGroup>
                   <br />
                   <p color="muted">Custom Items:</p>
-                  <FormGroup check>
-                    <Input type="checkbox" id="checklist1" />
-                    <Label for="checklist1">
-                      Add Javascript functionality to misc. buttons
-                    </Label>
-                  </FormGroup>
-                  <FormGroup check>
-                    <Input type="checkbox" id="checklist2" />
-                    <Label for="checklist2">Unit Testing</Label>
-                  </FormGroup>
-                  <FormGroup check hidden={!this.state.checklist3}>
-                    <Input type="checkbox" id="checklist3" />
-                    <Label for="checklist3">{this.state.checklist3_name}</Label>
-                  </FormGroup>
-                  <br />
-                  <Button
-                    onClick={this.toggleChecklistModal}
-                    color="primary"
-                    id="add_item"
-                  >
-                    Add Item
-                  </Button>{' '}
-                  {/*}   <Button color="danger" id="remove_item"> 
-                    Remove Item
-                  </Button> */}
+                  <CheckboxList2 />
+                  <AddCheckButton />
                 </Col>
               </Row>
             </CardBody>

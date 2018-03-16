@@ -17,7 +17,11 @@ import {
 } from 'reactstrap';
 import logo from '../../images/logo.png';
 import CheckboxList from '../common/CheckboxList';
-
+import Username from '../common/Username';
+import { NavLink as RRNavLink } from 'react-router-dom';
+import AddCheckButton from '../common/AddCheckButton';
+import CheckboxList2 from '../common/CheckboxList2';
+import MemberList from '../common/MemberList';
 class StuHomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -118,15 +122,19 @@ class StuHomePage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/student">
+          <NavbarBrand tag={RRNavLink} to="/student">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/add_class">Add Class</NavLink>
-                <NavLink href="/">Log Out</NavLink>
+                <NavLink tag={RRNavLink} to="/add_class">
+                  Add Class
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/">
+                  Log Out
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -134,14 +142,16 @@ class StuHomePage extends React.Component {
 
         <Container>
           <Row>
-            <h1>Hello, student!</h1>
+            <Username />
           </Row>
           <br />
           <Row>
             <Col>
               <Card body>
                 <CardTitle>
-                  <a href="/stu_class">CSE 134B</a>
+                  <NavLink tag={RRNavLink} to="/stu_class">
+                    CSE 134B
+                  </NavLink>
                 </CardTitle>
                 <CardSubtitle>Winter 2018</CardSubtitle>
                 <hr />
@@ -151,6 +161,7 @@ class StuHomePage extends React.Component {
                     <li>Kevin Lim</li>
                     <li>Ken Truong</li>
                     <li>Perry Liu</li>
+                    <MemberList />
                   </ul>
                   <p color="muted">Checklist:</p>
                   <form>
@@ -158,11 +169,7 @@ class StuHomePage extends React.Component {
                       list={this.state.checkboxitems1}
                       delete={this.deleteItem1}
                     />
-                    <input
-                      ref={a => (this._inputElement1 = a)}
-                      placeholder="enter task"
-                    />{' '}
-                    <Button onClick={this.addCheckbox1}>Add Checkbox</Button>
+                    <CheckboxList2 />
                   </form>
                 </div>
               </Card>
@@ -170,7 +177,9 @@ class StuHomePage extends React.Component {
             <Col>
               <Card body>
                 <CardTitle>
-                  <a href="/stu_class">COGS 108</a>
+                  <NavLink tag={RRNavLink} to="/stu_class">
+                    COGS 108
+                  </NavLink>
                 </CardTitle>
                 <CardSubtitle>Winter 2018</CardSubtitle>
                 <hr />
@@ -185,11 +194,12 @@ class StuHomePage extends React.Component {
                       list={this.state.checkboxitems2}
                       delete={this.deleteItem1}
                     />
+                    {/*
                     <input
                       ref={a => (this._inputElement2 = a)}
                       placeholder="enter task"
                     />{' '}
-                    <Button onClick={this.addCheckbox2}>Add Checkbox</Button>
+                    <Button onClick={this.addCheckbox2}>Add Checkbox</Button> */}
                   </form>
                 </div>
               </Card>

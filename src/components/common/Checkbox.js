@@ -1,13 +1,13 @@
 import React from 'react';
 import { Input, Label } from 'reactstrap';
-
 class Checkbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       checkboxState: true,
       labelState: true,
-      labelDescription: props.labelDescription
+      labelDescription: props.labelDescription,
+      id: props.id
     };
 
     this.toggle = this.toggle.bind(this);

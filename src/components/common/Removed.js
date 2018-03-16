@@ -14,7 +14,7 @@ class ListGroupLink extends React.Component {
   }
 
   handleClick(evt) {
-    window.location = this.state.linkTo;
+    this.props.history.push(this.state.linkTo);
   }
 
   render() {

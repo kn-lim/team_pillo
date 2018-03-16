@@ -24,6 +24,7 @@ import {
   ModalFooter
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import { NavLink as RRNavLink } from 'react-router-dom';
 
 class ForumPage extends React.Component {
   constructor(props) {
@@ -123,17 +124,25 @@ class ForumPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/stu_class">
+          <NavbarBrand tag={RRNavLink} to="/stu_class">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNav} />
           <Collapse isOpen={this.state.isNavOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/stu_class">Class</NavLink>
-                <NavLink href="/forum">Forum</NavLink>
-                <NavLink href="/grades">Grades</NavLink>
-                <NavLink href="/">Log Out</NavLink>
+                <NavLink tag={RRNavLink} to="/stu_class">
+                  Class
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/forum">
+                  Forum
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/grades">
+                  Grades
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/">
+                  Log Out
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

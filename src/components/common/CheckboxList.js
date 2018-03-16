@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormGroup } from 'reactstrap';
 import Checkbox from './Checkbox';
+import { connect } from 'react-redux';
 
 class CheckboxList extends Component {
   constructor(props, context) {

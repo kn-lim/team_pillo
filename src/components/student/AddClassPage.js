@@ -17,6 +17,7 @@ import {
   Alert
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import { NavLink as RRNavLink } from 'react-router-dom';
 
 class AddClassPage extends React.Component {
   constructor(props) {
@@ -71,15 +72,19 @@ class AddClassPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }} expand="md">
-          <NavbarBrand href="/student">
+          <NavbarBrand tag={RRNavLink} to="/student">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/add_class">Add Class</NavLink>
-                <NavLink href="/">Log Out</NavLink>
+                <NavLink tag={RRNavLink} to="/add_class">
+                  Add Class
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/">
+                  Log Out
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

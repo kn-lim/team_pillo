@@ -16,11 +16,22 @@ import {
   NavLink
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import { connect } from 'react-redux';
+import { setUsername } from '../../actions/index';
+import { NavLink as RRNavLink } from 'react-router-dom';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setUsername: username => dispatch(setUsername(username))
+  };
+};
 
 class RegisterPage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.redirectToStuHomePage = this.redirectToStuHomePage.bind(this);
+    this.redirectToTeacherHomePage = this.redirectToTeacherHomePage.bind(this);
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
@@ -48,6 +59,14 @@ class RegisterPage extends React.Component {
     );
     this.handleRegisterChange = this.handleRegisterChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  redirectToStuHomePage() {
+    this.props.history.push('/student');
+  }
+
+  redirectToTeacherHomePage() {
+    this.props.history.push('/instructor');
   }
 
   toggle() {
@@ -83,10 +102,16 @@ class RegisterPage extends React.Component {
     } else {
       if (register === 'Student') {
         evt.preventDefault();
-        window.location = '/student';
+        this.props.setUsername(
+          this.state.first_name + ' ' + this.state.last_name
+        );
+        this.redirectToStuHomePage();
       } else {
         evt.preventDefault();
-        window.location = '/instructor';
+        this.props.setUsername(
+          this.state.first_name + ' ' + this.state.last_name
+        );
+        this.redirectToTeacherHomePage();
       }
     }
   }
@@ -128,15 +153,19 @@ class RegisterPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/">
+          <NavbarBrand tag={RRNavLink} to="/">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink tag={RRNavLink} to="/login">
+                  Login
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/register">
+                  Register
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -267,4 +296,4 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-export default RegisterPage;
+export default connect(null, mapDispatchToProps)(RegisterPage);

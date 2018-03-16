@@ -12,10 +12,11 @@ import {
   Row,
   Col,
   Container,
-  ListGroup
+  ListGroup,
+  ListGroupItem
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-import ListGroupLink from '../common/ListGroupLink';
+import { NavLink as RRNavLink } from 'react-router-dom';
 
 class StuClassPage extends React.Component {
   constructor(props) {
@@ -37,18 +38,28 @@ class StuClassPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/student">
+          <NavbarBrand tag={RRNavLink} to="/student">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/stu_class">Class</NavLink>
-                <NavLink href="/forum">Forum</NavLink>
-                <NavLink href="/group">My Group</NavLink>
-                <NavLink href="/grades">Class Grades</NavLink>
-                <NavLink href="/">Log Out</NavLink>
+                <NavLink tag={RRNavLink} to="/stu_class">
+                  Class
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/forum">
+                  Forum
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/group">
+                  My Group
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/grades">
+                  Class Grades
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/">
+                  Log Out
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -63,16 +74,36 @@ class StuClassPage extends React.Component {
               <Row>
                 <Col xs="4">
                   <ListGroup>
-                    <ListGroupLink text="Group 1" linkTo="/group" />
-                    <ListGroupLink text="Group 2" linkTo="/group" />
-                    <ListGroupLink text="Group 3" linkTo="/group" />
-                    <ListGroupLink text="Group 4" linkTo="/group" />
-                    <ListGroupLink text="Group 5" linkTo="/group" />
-                    <ListGroupLink text="Group 6" linkTo="/group" />
-                    <ListGroupLink text="Group 7" linkTo="/group" />
-                    <ListGroupLink text="Group 8" linkTo="/group" />
-                    <ListGroupLink text="Group 9" linkTo="/group" />
-                    <ListGroupLink text="Group 10" linkTo="/group" />
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 1
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 2
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 3
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 4
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 5
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 6
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 7
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 8
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 9
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 10
+                    </ListGroupItem>
                   </ListGroup>
                 </Col>
                 <Col style={{ textAlign: 'left' }}>
@@ -98,7 +129,9 @@ class StuClassPage extends React.Component {
               <br />
               <Row>
                 <Col xs="12">
-                  <ListGroupLink text="Class Forum" linkTo="/forum" />
+                  <ListGroupItem tag={RRNavLink} to="/forum">
+                    Class Forum
+                  </ListGroupItem>
                 </Col>
               </Row>
             </CardBody>

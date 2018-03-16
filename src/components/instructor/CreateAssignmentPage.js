@@ -16,6 +16,7 @@ import {
   Container
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import { NavLink as RRNavLink } from 'react-router-dom';
 
 class CreateAssignmentPage extends React.Component {
   constructor(props) {
@@ -123,19 +124,31 @@ class CreateAssignmentPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/instructor">
+          <NavbarBrand tag={RRNavLink} to="/instructor">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/instr_class">Class</NavLink>
-                <NavLink href="/forum">Forum</NavLink>
-                <NavLink href="/class_list">Class List</NavLink>
-                <NavLink href="/create_assignment">Create Assignment</NavLink>
-                <NavLink href="/grades">Grades</NavLink>
-                <NavLink href="/">Log Out</NavLink>
+                <NavLink tag={RRNavLink} to="/instr_class">
+                  Class
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/forum">
+                  Forum
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/class_list">
+                  Class List
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/create_assignment">
+                  Create Assignment
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/grades">
+                  Grades
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/">
+                  Log Out
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

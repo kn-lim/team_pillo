@@ -17,6 +17,7 @@ import {
   NavLink
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import { NavLink as RRNavLink } from 'react-router-dom';
 
 class ForgotPasswordPage extends React.Component {
   constructor(props) {
@@ -78,15 +79,19 @@ class ForgotPasswordPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/">
+          <NavbarBrand tag={RRNavLink} to="/">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink tag={RRNavLink} to="/login">
+                  Login
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/register">
+                  Register
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

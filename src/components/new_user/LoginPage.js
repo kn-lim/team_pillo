@@ -17,6 +17,15 @@ import {
   // Tooltip
 } from 'reactstrap';
 import logo from '../../images/logo.png';
+import { connect } from 'react-redux';
+import { setUsername } from '../../actions/index';
+import { NavLink as RRNavLink } from 'react-router-dom';
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setUsername: username => dispatch(setUsername(username))
+  };
+};
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -28,7 +37,8 @@ class LoginPage extends React.Component {
       email: '',
       password: ''
     };
-
+    this.redirectToStuHomePage = this.redirectToStuHomePage.bind(this);
+    this.redirectToTeacherHomePage = this.redirectToTeacherHomePage.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleStudentSubmit = this.handleStudentSubmit.bind(this);
@@ -47,6 +57,13 @@ class LoginPage extends React.Component {
   handlePasswordChange(evt) {
     this.setState({ password: evt.target.value });
   }
+  redirectToStuHomePage() {
+    this.props.history.push('/student');
+  }
+
+  redirectToTeacherHomePage() {
+    this.props.history.push('/instructor');
+  }
 
   handleStudentSubmit(evt) {
     if (!this.canbeSubmitted()) {
@@ -54,7 +71,8 @@ class LoginPage extends React.Component {
       return;
     } else {
       evt.preventDefault();
-      window.location = '/student';
+      this.props.setUsername('Kevin Lim');
+      this.redirectToStuHomePage();
     }
   }
   handleInstructorSubmit(evt) {
@@ -63,7 +81,8 @@ class LoginPage extends React.Component {
       return;
     } else {
       evt.preventDefault();
-      window.location = '/instructor';
+      this.props.setUsername('Kevin Lim');
+      this.redirectToTeacherHomePage();
     }
   }
 
@@ -80,15 +99,19 @@ class LoginPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/">
+          <NavbarBrand tag={RRNavLink} to="/">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink tag={RRNavLink} to="/login">
+                  Login
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/register">
+                  Register
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -136,7 +159,13 @@ class LoginPage extends React.Component {
               </Button>
             </Form>
             <br />
-            <a href="/forgot_password">Forgot Password?</a>
+            <FormGroup>
+              <Button color="faded">
+                <NavLink tag={RRNavLink} to="/forgot_password">
+                  Forgot Password?
+                </NavLink>
+              </Button>
+            </FormGroup>
             <br />
           </Card>
         </Container>
@@ -152,4 +181,4 @@ function validate(email, password) {
   };
 }
 
-export default LoginPage;
+export default connect(null, mapDispatchToProps)(LoginPage);

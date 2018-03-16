@@ -10,7 +10,7 @@ import {
   Button
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-import ListGroupLink from '../common/ListGroupLink';
+import { NavLink as RRNavLink } from 'react-router-dom';
 
 class SplashPage extends React.Component {
   constructor(props) {
@@ -32,15 +32,19 @@ class SplashPage extends React.Component {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/">
+          <NavbarBrand tag={RRNavLink} to="/">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/register">Register</NavLink>">
+                <NavLink tag={RRNavLink} to="/login">
+                  Login
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/register">
+                  Register
+                </NavLink>">
               </NavItem>
             </Nav>
           </Collapse>
@@ -55,8 +59,10 @@ class SplashPage extends React.Component {
             <br />Easily keep track of your progress and feedback
           </p>
           <p className="lead">Do it all on one convenient platform!</p>
-          <Button>
-            <ListGroupLink text="Register Now" linkTo="/register" />
+          <Button color="faded">
+            <NavLink tag={RRNavLink} to="/register">
+              Register Now!
+            </NavLink>
           </Button>
         </div>
       </div>

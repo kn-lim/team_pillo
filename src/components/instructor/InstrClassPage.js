@@ -20,43 +20,24 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
+  ModalFooter,
+  ListGroupItem
 } from 'reactstrap';
 import logo from '../../images/logo.png';
-import ListGroupLink from '../common/ListGroupLink';
 import Announcement from '../common/Announcement';
+import { NavLink as RRNavLink } from 'react-router-dom';
+import AnnouncementList from '../common/AnnouncementList';
+import AddAnnouncementButton from '../common/AddAnnouncementButton';
 
 class InstrClassPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
     this.toggleNav = this.toggleNav.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInfoChange = this.handleInfoChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
 
     this.state = {
-      isOpen: false,
-      isNavOpen: false,
-      modal: false,
-      announcementToggle: false,
-      announcementTitle: '',
-      announcementInfo: '',
-      announcementDate: '',
-      completeTitle: '',
-      completeInfo: ''
+      isNavOpen: false
     };
-  }
-
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-      modal: !this.state.modal,
-      announcementToggle: false,
-      announcementTitle: '',
-      announcementInfo: ''
-    });
   }
 
   toggleNav() {
@@ -65,40 +46,35 @@ class InstrClassPage extends React.Component {
     });
   }
 
-  handleTitleChange(evt) {
-    this.setState({ announcementTitle: evt.target.value });
-  }
-  handleInfoChange(evt) {
-    this.setState({ announcementInfo: evt.target.value });
-  }
-
-  handleSubmit(evt) {
-    this.setState({
-      announcementToggle: true,
-      completeTitle: this.state.announcementTitle,
-      completeInfo: this.state.announcementInfo,
-      announcementDate: 'Mar. 4, 2018',
-      modal: !this.state.modal
-    });
-  }
-
   render() {
     return (
       <div>
         <Navbar dark style={{ background: '#34374C' }}>
-          <NavbarBrand href="/instructor">
+          <NavbarBrand tag={RRNavLink} to="/instructor">
             <img src={logo} width="131" alt="Pillo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNav} />
           <Collapse isOpen={this.state.isNavOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/instr_class">Class</NavLink>
-                <NavLink href="/forum">Forum</NavLink>
-                <NavLink href="/create_class">Class List</NavLink>
-                <NavLink href="/create_assignment">Create Assignment</NavLink>
-                <NavLink href="/grades">Grades</NavLink>
-                <NavLink href="/">Log Out</NavLink>
+                <NavLink tag={RRNavLink} to="/instr_class">
+                  Class
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/forum">
+                  Forum
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/instr_class_list">
+                  Class List
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/create_assignment">
+                  Create Assignment
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/grades">
+                  Grades
+                </NavLink>
+                <NavLink tag={RRNavLink} to="/">
+                  Log Out
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
@@ -113,88 +89,55 @@ class InstrClassPage extends React.Component {
               <Row>
                 <Col xs="4">
                   <ListGroup>
-                    <ListGroupLink text="Group 1" linkTo="/group" />
-                    <ListGroupLink text="Group 2" linkTo="/group" />
-                    <ListGroupLink text="Group 3" linkTo="/group" />
-                    <ListGroupLink text="Group 4" linkTo="/group" />
-                    <ListGroupLink text="Group 5" linkTo="/group" />
-                    <ListGroupLink text="Group 6" linkTo="/group" />
-                    <ListGroupLink text="Group 7" linkTo="/group" />
-                    <ListGroupLink text="Group 8" linkTo="/group" />
-                    <ListGroupLink text="Group 9" linkTo="/group" />
-                    <ListGroupLink text="Group 10" linkTo="/group" />
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 1
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 2
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 3
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 4
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 5
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 6
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 7
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 8
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 9
+                    </ListGroupItem>
+                    <ListGroupItem tag={RRNavLink} to="/group">
+                      Group 10
+                    </ListGroupItem>
                   </ListGroup>
                 </Col>
                 <Col>
                   <h3>Announcements</h3>
                   <hr />
-                  <div>
-                    {' '}
-                    {this.state.announcementToggle ? (
-                      <Announcement
-                        title={this.state.completeTitle}
-                        date={this.state.announcementDate}
-                        description={this.state.completeInfo}
-                      />
-                    ) : null}
-                  </div>
-                  <Announcement
-                    title="PA3"
-                    date="Feb. 18, 2018"
-                    description="Convert your PA2 hard-coded content such as to do list, chat messages, to JavaScript objects. Then, use JavaScript to populate the content to HTML."
-                  />
-                  <Button
-                    color="primary"
-                    onClick={this.toggle}
-                    id="add_announcement"
-                  >
-                    Add Annoucement
-                  </Button>
+                  <AnnouncementList />
+                  <AddAnnouncementButton />
                 </Col>
               </Row>
               <br />
               <Row>
                 <Col xs="12">
-                  <ListGroupLink text="Class Forum" linkTo="/forum" />
+                  <ListGroupItem tag={RRNavLink} to="/forum">
+                    Class Forum
+                  </ListGroupItem>
                 </Col>
               </Row>
             </CardBody>
           </Card>
-          <Modal isOpen={this.state.modal} toggle={this.toggle}>
-            <ModalHeader toggle={this.toggle}>
-              Add a new announcement
-            </ModalHeader>
-            <ModalBody>
-              <Form>
-                <FormGroup>
-                  <p color="muted">Enter the announcement title:</p>
-                  <Input
-                    type="text"
-                    value={this.state.announcementTitle}
-                    onChange={this.handleTitleChange}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <p color="muted">Enter the announcement details:</p>
-                  <Input
-                    type="textarea"
-                    value={this.state.announcementInfo}
-                    onChange={this.handleInfoChange}
-                    className="textarea"
-                    rows={4}
-                  />
-                </FormGroup>
-              </Form>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={this.handleSubmit}>
-                Submit
-              </Button>{' '}
-              <Button color="secondary" onClick={this.toggle}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </Modal>
         </Container>
       </div>
     );
