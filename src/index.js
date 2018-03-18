@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './styles/style.css';
 
 // Mock AJAX
-import { loadMsg } from './actions/msgActions';
+import { loadMembers } from './actions/memberActions';
 
 //const store = configureStore();
 

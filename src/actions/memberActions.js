@@ -1,10 +1,10 @@
-import MsgApi from '../api/loadMsg';
+import GradeApi from '../api/loadMembers';
 import * as types from './actionTypes';
 import { beginAjaxCall } from './ajaxStatusActions';
 
-export function loadMsg() {
+export function loadMembers() {
   return dispatch => {
     dispatch(beginAjaxCall());
-    return loadMsg.getMsg();
+    return loadMembers.getMembers();
   };
 }
