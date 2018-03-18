@@ -12,7 +12,7 @@ var members = [
   }
 ];
 
-class MemberApi {
+class MembersApi {
   static getMembers() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {

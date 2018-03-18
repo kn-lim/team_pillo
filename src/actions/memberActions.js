@@ -1,4 +1,4 @@
-import GradeApi from '../api/loadMembers';
+import MembersApi from '../api/loadMembers';
 import * as types from './actionTypes';
 import { beginAjaxCall } from './ajaxStatusActions';
 
